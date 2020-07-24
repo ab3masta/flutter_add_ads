@@ -2,6 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 
 const String testDevice = 'MObile_id';
+
 // const String testDevice = 'DF6865A02B1A0D40C2E98CCEF30E3226'; // for real ads
 class HomePage extends StatefulWidget {
   @override
@@ -19,7 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   BannerAd createBannerAd() {
     return BannerAd(
-        adUnitId: BannerAd.testAdUnitId, //change BannerAd.testAdUnitId for real ads
+        adUnitId:
+            BannerAd.testAdUnitId, //change BannerAd.testAdUnitId for real ads
         size: AdSize.banner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
@@ -29,7 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   InterstitialAd createInterstitialAd() {
     return InterstitialAd(
-        adUnitId: InterstitialAd.testAdUnitId,//change InterstitialAd.testAdUnitId for real ads
+        adUnitId: InterstitialAd
+            .testAdUnitId, //change BannerAd.testAdUnitId for real ads
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
           print("InterstitialAd $event");
@@ -39,7 +42,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId); //change BannerAd.testAdUnitId to appid for real ads
+    FirebaseAdMob.instance.initialize(
+        appId: BannerAd
+            .testAdUnitId); //change BannerAd.testAdUnitId to appid for real ads
     _bannerAd = createBannerAd()
       ..load()
       ..show();
@@ -60,11 +65,14 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: Center(
-          child: RaisedButton(onPressed: (){
-            createInterstitialAd()
-      ..load()
-      ..show();
-          },child: Text("show interstitialAd"),),
+          child: RaisedButton(
+            onPressed: () {
+              createInterstitialAd()
+                ..load()
+                ..show();
+            },
+            child: Text("show interstitialAd"),
+          ),
         ),
       ),
     );
